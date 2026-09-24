@@ -12,45 +12,44 @@
 - **Fecha del laboratorio:** 24/09/2026
 - **Fecha del taller:** 24/09/2026
 - **Tema principal:** Encontrar un dato entre un millón
-- **Pregunta de la semana:** [Pregunta orientadora del documento de actividad]
+- **Pregunta de la semana:** ¿Cómo encontramos una lectura específica cuando el repositorio pasa de cientos a cientos de miles o millones de registros y cuánto cuesta hacerlo?
 
 ## 2. Prediccion antes de ejecutar
 
 Antes de abrir o ejecutar el programa, responde:
 
 1. **Que creo que va a ocurrir?**
-   [Escribe tu prediccion concreta. Incluye el resultado que esperas y por que.]
+   Al buscar el peor caso en 1.000.000 de registros, la búsqueda lineal realizará exactamente 1.000.000 de comparaciones ($O(n)$), mientras que la búsqueda binaria tardará apenas unas 20 comparaciones ($O(\log_2 n)$) debido a que divide el espacio de búsqueda a la mitad en cada paso.
+   Creo que la búsqueda binaria fallará o dará resultados incorrectos al buscar por PM2.5 porque los datos de este sensor se generan de forma aleatoria y no están ordenados.
 
-2. **Que parte del programa o del algoritmo puede fallar?**
-   [Indica una linea, bloque, dato o supuesto que quieras comprobar.]
+3. **Que parte del programa o del algoritmo puede fallar?**
+   El bloque de la búsqueda binaria por PM2.5 en BuscadorLecturas.java y la condición de los límites (inicio y fin) si no se actualizan con +1 o -1, lo que podría provocar un ciclo infinito.
 
-3. **Como comprobare mi prediccion?**
-   [Describe una prueba pequena: entrada, paso manual o resultado esperado.]
+4. **Como comprobare mi prediccion?**
+   Ejecutando el BancoDePruebas con los tamaños de 1.000, 100.000 y 1.000.000 de registros y analizando la consola.
 
 ## 3. Evidencia del laboratorio
 
 ### Resultado observado
 
-[Describe que ocurrio realmente al ejecutar o probar la solucion. No escribas
-solamente "funciono" o "no funciono". Incluye los datos de entrada y el
-resultado relevante.]
+Para $n = 1.000.000$, la búsqueda lineal por timestamp arrojó 1.000.000 comparaciones, mientras que la binaria arrojó solo 20 comparaciones. Al ejecutar el experimento 4 con PM2.5, la búsqueda binaria no pudo localizar los valores existentes de manera confiable porque los datos estaban desordenados.
 
 ### Diferencia entre la prediccion y el resultado
 
-[Explica que coincidencias o diferencias encontraste y que las puede explicar.]
+Los resultados coincidieron exactamente con la teoría de complejidad Big-O. La búsqueda binaria demostró ser exponencialmente más eficiente, pero confirmó que las precondiciones de ordenamiento son obligatorias.
 
 ### Error o comportamiento inesperado
 
-- **Que ocurrio?** [Describe el problema sin ocultarlo.]
-- **Por que ocurrio?** [Explica la causa con la evidencia disponible.]
-- **Como lo corregimos o que falta corregir?** [Describe la solucion o el siguiente paso.]
+- **Que ocurrio?** Al implementar inicialmente la búsqueda binaria, un error en la actualización de los punteros sin el +1 provocó que el ciclo se congelara en arreglos pequeños.
+- **Por que ocurrio?** El valor del medio coincidía con el inicio o fin sin avanzar, cayendo en un bucle infinito.
+- **Como lo corregimos o que falta corregir?** Aseguramos que el intervalo avanzara correctamente utilizando inicio = medio + 1 y fin = medio - 1.
 
 ## 4. Explicacion en lenguaje llano
 
 Explica el concepto principal como se lo explicarias a una persona de doce
 anos. Usa entre tres y cinco lineas y evita palabras tecnicas que no expliques.
 
-> [Escribe aqui tu explicacion.]
+Buscar un dato entre un millón de registros sin orden es como buscar una palabra en un libro de texto sin índice, revisando página por página hasta encontrarla (búsqueda lineal). En cambio, la búsqueda binaria es como buscar en un diccionario abierto: abres exactamente a la mitad, miras si la palabra está antes o después, descartas de inmediato toda la mitad que no te sirve, y repites el proceso hasta dar con ella en muy pocos pasos.
 
 ### Ejemplo o analogia
 
@@ -61,10 +60,10 @@ cada parte de la analogia y donde deja de ser exacta.]
 
 Al intentar explicar el tema, identifica el punto que aun no comprendes bien.
 
-- **Mi duda concreta es:** [Pregunta especifica, no "no entiendo nada".]
-- **Lo que ya puedo explicar es:** [Parte que si comprendes.]
-- **Para resolver la duda consulte:** [Clase, lectura, experimento, companero u otra fuente.]
-- **Ahora lo entiendo asi:** [Respuesta escrita con tus palabras.]
+- **Mi duda concreta es:** ¿Cómo manejan los sistemas de bases de datos reales la actualización de índices cuando los datos cambian constantemente de posición?
+- **Lo que ya puedo explicar es:** La diferencia matemática y práctica entre la complejidad lineal $O(n)$ y la logarítmica $O(\log n)$, así como la importancia crucial de las precondiciones.
+- **Para resolver la duda consulte:**La guía de la Semana 3, las discusiones de código en clase y las pruebas experimentales del banco de pruebas..
+- **Ahora lo entiendo asi:** Un algoritmo brillante no sirve de nada si se ejecuta sobre datos que no cumplen las reglas que el algoritmo necesita para funcionar.
 
 ## 6. Trazado de la solucion
 
@@ -85,10 +84,10 @@ dibuja su estado en cada paso o inserta aqui una imagen legible.
 
 Relaciona lo aprendido con la Plataforma de Monitoreo Ambiental Urbano.
 
-- **Problema que debiamos resolver:** [Situacion concreta del sistema.]
-- **Estructura, algoritmo o estrategia elegida:** [Nombre y uso.]
-- **Alternativa descartada:** [Otra opcion razonable.]
-- **Por que elegimos la primera:** [Ventaja y costo de la decision.]
+- **Problema que debiamos resolver:** Consultar eficientemente lecturas específicas por timestamp en un repositorio masivo de hasta 1.000.000 de registros.
+- **Estructura, algoritmo o estrategia elegida:** Búsqueda binaria basada en un arreglo ordenado cronológicamente por timestamp.
+- **Alternativa descartada:**Búsqueda lineal pura para todas las consultas del sistema.
+- **Por que elegimos la primera:** Reduce drásticamente el número de comparaciones de un millón a tan solo 20, optimizando el rendimiento del sistema IoT.
 - **Que evidencia respalda la decision:** [Prueba, medicion o comportamiento observado.]
 
 ## 8. Aporte al proyecto
