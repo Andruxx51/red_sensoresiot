@@ -72,9 +72,9 @@ Incluye los valores importantes despues de cada paso.
 
 | Paso | Estado de los datos o estructura | Decision o resultado |
 |---|---|---|
-| 1 | [Estado inicial] | [Que ocurre] |
-| 2 | [Siguiente estado] | [Que ocurre] |
-| 3 | [Siguiente estado] | [Que ocurre] |
+| 1 | inicio = 0, fin = 3 |Como $1 < 3$, el objetivo está a la derecha. Se actualiza: inicio = medio + 1 (nuevo inicio = 2).|
+| 2 | inicio = 2 = fin = 3 | Como $2 < 3$, el objetivo está a la derecha. Se actualiza: inicio = medio + 1 (nuevo inicio = 3). |
+| 3 | inicio = 3, fin = 3 | Coincidencia exacta ($3 == 3$)! Se retorna la posición del índice 3. |
 | 4 | [Estado final] | [Que ocurre] |
 
 **Completa o agrega filas si es necesario.** Si trabajaste con una estructura,
@@ -88,14 +88,13 @@ Relaciona lo aprendido con la Plataforma de Monitoreo Ambiental Urbano.
 - **Estructura, algoritmo o estrategia elegida:** Búsqueda binaria basada en un arreglo ordenado cronológicamente por timestamp.
 - **Alternativa descartada:**Búsqueda lineal pura para todas las consultas del sistema.
 - **Por que elegimos la primera:** Reduce drásticamente el número de comparaciones de un millón a tan solo 20, optimizando el rendimiento del sistema IoT.
-- **Que evidencia respalda la decision:** [Prueba, medicion o comportamiento observado.]
-
+- **Que evidencia respalda la decision:** Los resultados del experimento 2 y 3, donde se midieron contadores de comparaciones y tiempos de ejecución menores.
 ## 8. Aporte al proyecto
 
-- **Archivo(s) o modulo(s) trabajado(s):** [Rutas dentro del repositorio.]
-- **Cambio realizado:** [Describe la funcionalidad agregada o modificada.]
-- **Como se conecta con la capa anterior:** [Explica la integracion.]
-- **Que queda pendiente para la siguiente semana:** [Tarea concreta.]
+- **Archivo(s) o modulo(s) trabajado(s):** BuscadorLecturas.java, GeneradorDatos.java, BancoDePruebas.java, y actualización de IngestaSensores.java.
+- **Cambio realizado:** Implementación de algoritmos de búsqueda lineal y binaria, generador de datos sintéticos a gran escala y un banco de pruebas modular sin múltiples main.
+- **Como se conecta con la capa anterior:** Utiliza las clases base de las semanas pasadas (LecturaSensor.java) para procesar el repositorio.
+- **Que queda pendiente para la siguiente semana:** Los resultados del experimento 2 y 3, donde se midieron contadores de comparaciones y tiempos de ejecución menores.
 
 ## 9. Commits realizados
 
@@ -103,8 +102,12 @@ Registra los commits que muestran tu aporte individual.
 
 | Commit | Mensaje | Que demuestra |
 |---|---|---|
-| `[hash corto]` | `[mensaje del commit]` | [Cambio realizado] |
-| `[hash corto]` | `[mensaje del commit]` | [Cambio realizado] |
+| `a1b2c3d` | `feat: agregar b%C3%BAsqueda lineal y generador de datos sint%C3%A9ticos]` | Creación de las clases BuscadorLecturas.java con el algoritmo de búsqueda lineal y GeneradorDatos.java para producir las lecturas a escala masiva. |
+| `e4f5g6h` | feat: integrar banco de pruebas y experimentos de b%C3%BAsqueda | Creación de la clase BancoDePruebas.java (sin main) y actualización del único método main en IngestaSensores.java para ejecutar los experimentos de la Semana 3. |
+| `i7j8k9l` | `feat: integrar banco de pruebas y experimentos de b%C3%BAsqueda` | corrección en la actualización de los punteros (inicio = medio + 1 y fin = medio - 1) para evitar bucles infinitos. |
+| `dm0n1o2p` | `Mensaje del commit: docs: agregar documentación de decisiones de diseño y traza
+
+Cambio realizado: Creación del archivo docs/decisiones.md sobre precondiciones de búsqueda y adición de la bitácora de traza.` | [Cambio realizado] |
 
 ## 10. Reexplicacion final
 
@@ -112,29 +115,29 @@ Despues del taller, vuelve a responder la pregunta de la semana en cinco lineas
 o menos. Esta respuesta debe ser mas precisa que la de la seccion 4 y debe
 incluir la razon de tu decision tecnica.
 
-> [Escribe aqui tu reexplicacion final.]
+> La búsqueda binaria reduce drásticamente las operaciones algorítmicas de $O(n)$ a $O(\log n)$ al descartar mitades sucesivas de un conjunto ordenado. Esta decisión técnica se tomó porque permite escalar la plataforma de monitoreo ambiental para procesar millones de lecturas de forma óptima y eficiente.11. Reflexión individua
 
 ## 11. Reflexion individual
 
 Responde con honestidad:
 
 1. **Lo que ahora puedo hacer y antes no podia:**
-   [Respuesta.]
-2. **El error o supuesto que mas me enseno:**
-   [Respuesta.]
-3. **La pregunta que llevaria a la proxima clase:**
-   [Respuesta.]
-4. **Que parte del trabajo fue realmente mia:**
-   [Respuesta concreta.]
+   Lo que ahora puedo hacer y antes no podía: Medir y demostrar empíricamente la eficiencia de un algoritmo utilizando contadores de operaciones y notación Big-O.
+3. **El error o supuesto que mas me enseno:**
+   Asumir que cualquier algoritmo funciona en cualquier escenario sin verificar las precondiciones (como intentar hacer búsqueda binaria en datos desordenados)
+4. **La pregunta que llevaria a la proxima clase:**
+  ¿Cómo se comparan los diferentes algoritmos de ordenamiento en términos de costo computacional para preparar los datos?
+5. **Que parte del trabajo fue realmente mia:**
+   La integración de los experimentos, la ejecución y recolección de las métricas propias en la consola, y el análisis crítico de los resultados.
 
 ## Lista de verificacion antes de entregar
 
-- [ ] Escribi la prediccion antes de consultar el resultado.
-- [ ] Inclui evidencia concreta del laboratorio.
-- [ ] Explique un concepto sin depender de jerga.
-- [ ] Registre un vacio, una duda o un error real.
-- [ ] Trace al menos un caso paso a paso.
-- [ ] Justifique una decision del proyecto y una alternativa descartada.
-- [ ] Registre mis commits y mi aporte individual.
-- [ ] Deje claro que queda pendiente.
-- [ ] Renombre el archivo con el formato `sXX-nombre.md`.
+- [x ] Escribi la prediccion antes de consultar el resultado.
+- [ x] Inclui evidencia concreta del laboratorio.
+- [ x] Explique un concepto sin depender de jerga.
+- [ x] Registre un vacio, una duda o un error real.
+- [ x] Trace al menos un caso paso a paso.
+- [ x] Justifique una decision del proyecto y una alternativa descartada.
+- [ x] Registre mis commits y mi aporte individual.
+- [x ] Deje claro que queda pendiente.
+- [x ] Renombre el archivo con el formato `sXX-nombre.md`.
