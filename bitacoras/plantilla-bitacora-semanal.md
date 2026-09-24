@@ -1,4 +1,4 @@
-# Bitacora individual - Semana [XX]
+# Bitacora individual - Semana [3]
 
 > Copia este archivo y renombralo como `s[XX]-[tu-nombre].md`.
 > Completa todas las secciones con tus propias palabras. Esta bitacora es
@@ -6,12 +6,12 @@
 
 ## 1. Datos de la actividad
 
-- **Estudiante:** [Nombre completo]
-- **Equipo:** [Numero o nombre del equipo]
-- **Semana:** [Numero de semana]
-- **Fecha del laboratorio:** [AAAA-MM-DD]
-- **Fecha del taller:** [AAAA-MM-DD]
-- **Tema principal:** [Tema o estructura trabajada]
+- **Estudiante:** Daniel Andrés Chacón Olaya
+- **Equipo:** Grupo 3
+- **Semana:** 3
+- **Fecha del laboratorio:** 24/09/2026
+- **Fecha del taller:** 24/09/2026
+- **Tema principal:** Encontrar un dato entre un millón
 - **Pregunta de la semana:** [Pregunta orientadora del documento de actividad]
 
 ## 2. Prediccion antes de ejecutar
