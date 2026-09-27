@@ -130,6 +130,34 @@ Responde con honestidad:
 5. **Que parte del trabajo fue realmente mia:**
    La integración de los experimentos, la ejecución y recolección de las métricas propias en la consola, y el análisis crítico de los resultados.
 
+Consideremos:
+
+```text
+[0, 1, 2, 3]
+```
+
+Buscamos:
+
+```text
+3
+```
+
+Construye esta tabla:
+
+| Paso | inicio | fin | medio | valor medio | acción |
+|---|---:|---:|---:|---:|---|
+| 1 | 0 | 3 | 1 | 1 | mover inicio |
+| 2 | 2 | 3 | 2 | 2 | mover inicio |
+| 3 | 3 | 3 | 3 | 3 | encontrado |
+| 4 | ? | ? | ? | ? | ? |
+
+Debes identificar exactamente qué ocurre cuando:
+
+```text
+valor medio < objetivo
+```
+
+
 ## Lista de verificacion antes de entregar
 
 - [x ] Escribi la prediccion antes de consultar el resultado.
