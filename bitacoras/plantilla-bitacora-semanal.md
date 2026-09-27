@@ -149,13 +149,79 @@ Construye esta tabla:
 | 1 | 0 | 3 | 1 | 1 | mover inicio |
 | 2 | 2 | 3 | 2 | 2 | mover inicio |
 | 3 | 3 | 3 | 3 | 3 | encontrado |
-| 4 | ? | ? | ? | ? | ? |
+| 4 | 0 | 0 | 0 | 0 | no necesario |
 
 Debes identificar exactamente qué ocurre cuando:
 
 ```text
 valor medio < objetivo
 ```
+
+Construye una tabla como esta con tus propios resultados:
+
+| Tamaño | Lineal | Binaria | Tiempo lineal | Tiempo binaria |
+|---:|---:|---:|---:|---:|
+| 1.000 | 1000|10 |0.150 |0.020 |
+| 100.000 |100000 |17 |2.100 |0.050 |
+| 1.000.000 |1000000 |20 |15.400 |0.080 |
+
+No copies los valores de la guía.
+
+> **Los resultados experimentales deben ser obtenidos por tu equipo.**
+
+# 44. Preguntas de pensamiento crítico
+
+Responde con argumentos. **No se busca solamente una respuesta técnica o de código.**
+
+### Pregunta 1
+
+Una empresa tiene un millón de registros y realiza únicamente cinco búsquedas durante todo el día.
+
+¿Tiene sentido diseñar toda la estrategia de almacenamiento alrededor de una búsqueda binaria? ¿Qué otros costos o factores considerarías?
+R: definitivamente haría falta una estrategia como esta, ayudaría mucho a la búsqueda de aquellos datos y mas si se realizan solo 5, en este caso, diariamente, uno de los factores es la presencia de una condición y es el orden de los datos, si estos no lo están, es mas complejo y gasto de tiempo enorme y puede que no se cumpla con el objetivo.
+
+---
+
+### Pregunta 2
+
+Un algoritmo puede ser mucho más rápido que otro y, sin embargo, producir una respuesta incorrecta.
+
+¿Por qué consideras que la corrección debe analizarse antes que la eficiencia?
+R: no se busca la perfección al momento de generar un algoritmo y cabe aclarar que cada sistema es generado con un propósito diferente, por eso existen los prototipos o las pruebas para poder de alguna manera corregir aquellos errores que se generen o de lo contrario avanzar ene el proceso.
+
+---
+
+### Pregunta 3
+
+Imagina que una plataforma consulta constantemente por `timestamp`, pero ocasionalmente necesita consultar por `PM2.5`.
+
+¿Qué consecuencias tendría organizar los datos pensando principalmente en uno de estos campos?
+R: una consulta por timestamp puede ser una respuesta a este tipo de casos, sin embargo al tratarse de consultas con rangos mas amplios, necesita de un indice secundario, lo cual es mas costoso que hacer consultas por tiempo, por otro lado por PM2.5, es el índice secundario que apoya la busqueda realizada de primeramente por el timestamp, aunque se recomienda priorizar de primeras la busqueda por timestamp y PM".5 como un acceso ocacional.
+
+No respondas solamente desde el código: considera el funcionamiento de la plataforma.
+
+---
+
+### Pregunta 4
+
+Supón que tienes un conjunto de datos perfectamente ordenado y alguien modifica algunos registros sin conservar el orden.
+
+¿Qué riesgos aparecen si el sistema continúa utilizando búsqueda binaria sin verificar las condiciones de los datos?
+R: el sistema supone que los datos siguen en orden lo que depende del usuario es rectificar que dicho orden este establecido, de lo contrario se generan riesgos al momento de realizar la búsqueda binaria, hablaríamos de la probabilidad y suerte, a la par de asumir la consecuencia de perder el datos porque fue descartado dependiendo de su posición 
+
+
+---
+
+### Pregunta 5
+
+En ingeniería de software suele decirse:
+
+> "Que funcione no significa que sea una buena solución."
+
+Relaciona esta afirmación con lo aprendido en las semanas 1, 2 y 3 del proyecto.
+
+¿Qué ha cambiado en la manera en que analizas una solución desde que comenzó el proyecto?
+R: he aprendido a realizar un analisis mas practico y teorico a momento de leer las guias y usando codigo como manera de ver el ejemplo de forma visual, puede que si sea una solucion o que pretenda ser una, lo que si es, es una estrategia o estrategias que pueden servir mas adelante y no solo copiar y pegar, sino entenderlas y cuales son su funcionamiento para reconocer su ventajas y desventajas de dados casos.
 
 
 ## Lista de verificacion antes de entregar
